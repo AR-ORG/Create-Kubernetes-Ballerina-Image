@@ -1,0 +1,58 @@
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  annotations: {}
+  finalizers: []
+  labels:
+    app: "ballerina_app_v2"
+  name: "version2"
+  ownerReferences: []
+spec:
+  externalIPs: []
+  loadBalancerSourceRanges: []
+  ports:
+  - port: 9090
+    protocol: "TCP"
+    targetPort: 9090
+  selector:
+    app: "ballerina_app_v2"
+  type: "NodePort"
+---
+apiVersion: "extensions/v1beta1"
+kind: "Deployment"
+metadata:
+  annotations: {}
+  finalizers: []
+  labels:
+    app: "ballerina_app_v2"
+  name: "ballerinav2deployment"
+  ownerReferences: []
+spec:
+  replicas: 1
+  template:
+    metadata:
+      annotations: {}
+      finalizers: []
+      labels:
+        app: "ballerina_app_v2"
+      ownerReferences: []
+    spec:
+      containers:
+      - args: []
+        command: []
+        env: []
+        envFrom: []
+        image: "harshal0812/ballerinav2"
+        imagePullPolicy: "IfNotPresent"
+        name: "ballerinav2deployment"
+        ports:
+        - containerPort: 9090
+          protocol: "TCP"
+        volumeMounts: []
+      hostAliases: []
+      imagePullSecrets: []
+      initContainers: []
+      nodeSelector: {}
+      tolerations: []
+      volumes: []
